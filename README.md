@@ -10,6 +10,8 @@ AgriWeather Advisor is a simple web application that:
 * Provides a basic crop tip based on temperature.
 * Uses the OpenWeatherMap API to fetch live weather data.
 
+APP LINK  https://0allan1.github.io/AgriWeather-Advisor/
+
 ## 2. Docker Hub Image
 
 ```
