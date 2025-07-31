@@ -120,16 +120,6 @@ Include screenshots of:
 * Curl results from Web01 and Web02
 * Curl or browser test from Lb01 showing round-robin
 
-## 9. Optional Hardening
 
-* Use environment variables for API keys:
-
-```bash
-docker run -d --name agriweather --env API_KEY=xxxx -p 8080:80 <your-dockerhub-username>/agriweather:v1
-```
-
-* Update `script.js` to read the key from a backend or config instead of hardcoding.
-
----
 
 **End of README**
