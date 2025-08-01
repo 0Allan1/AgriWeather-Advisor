@@ -71,8 +71,6 @@ docker exec -it lb-01 sh -c 'haproxy -sf $(pidof haproxy) -f /etc/haproxy/haprox
 
 From Lb01 or your local machine:
 
-bash
-curl http://localhost
 
 
 * Run multiple times; responses should alternate between Web01 and Web02.
