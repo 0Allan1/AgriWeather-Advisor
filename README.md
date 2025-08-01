@@ -1,8 +1,17 @@
-# AgriWeather Advisor - Deployment Guide
+# AgriWeather Advisor 
 
-This document explains how to build, deploy, and test the AgriWeather Advisor web application using Docker and HAProxy load balancing.
+AgriWeather Advisor is a web-based tool designed to assist farmers by providing:
 
-## 1. Application Overview
+Real-time weather updates for any location.
+
+Actionable crop advice based on current temperature.
+
+User-friendly interface accessible via browser on desktop or mobile.
+
+This app bridges the gap between raw weather data and practical farming decisions, helping farmers reduce risks and improve productivity.
+APP LINK  https://0allan1.github.io/AgriWeather-Advisor/
+
+##  Application Overview
 
 AgriWeather Advisor is a simple web application that:
 
@@ -10,70 +19,28 @@ AgriWeather Advisor is a simple web application that:
 * Provides a basic crop tip based on temperature.
 * Uses the OpenWeatherMap API to fetch live weather data.
 
-APP LINK  https://0allan1.github.io/AgriWeather-Advisor/
 
-## 2. Docker Hub Image
+##  Docker Hub Image
 
 ```
-Docker Hub: https://hub.docker.com/r/<your-dockerhub-username>/agriweather
-Image: <your-dockerhub-username>/agriweather:v1
+Docker Hub: https://hub.docker.com/r/0allan1/agriweather
+Image: 0allan1/agriweather:v1
 ```
 
-## 3. Local Build & Test
+##  Local Build & Test
 
 Build and run the application locally:
 
 ```bash
-docker build -t <your-dockerhub-username>/agriweather:v1 .
-docker run -p 8080:80 <your-dockerhub-username>/agriweather:v1
+docker build -t 0allan1/agriweather:v1 .
+docker run -p 8080:80 0allan1/agriweather:v1
 ```
 
 Visit [http://localhost:8080](http://localhost:8080) to view the application.
 
-## 4. Push Image to Docker Hub
 
-```bash
-docker login
-docker push <your-dockerhub-username>/agriweather:v1
-```
+##  Configure HAProxy on Lb01
 
-## 5. Deployment on Web01 & Web02
-
-### SSH into Web01
-
-```bash
-ssh username@web01
-```
-
-Pull and run the container:
-
-```bash
-docker pull <your-dockerhub-username>/agriweather:v1
-docker run -d --name agriweather --restart unless-stopped -p 8080:80 <your-dockerhub-username>/agriweather:v1
-curl http://localhost:8080 # Verify it works
-```
-
-### SSH into Web02
-
-```bash
-ssh username@web02
-```
-
-Repeat the same steps as Web01:
-
-```bash
-docker pull <your-dockerhub-username>/agriweather:v1
-docker run -d --name agriweather --restart unless-stopped -p 8080:80 <your-dockerhub-username>/agriweather:v1
-curl http://localhost:8080
-```
-
-## 6. Configure HAProxy on Lb01
-
-### SSH into Lb01
-
-```bash
-ssh username@lb01
-```
 
 Edit HAProxy config:
 
@@ -81,7 +48,7 @@ Edit HAProxy config:
 sudo nano /etc/haproxy/haproxy.cfg
 ```
 
-Add the following snippet (update IPs for your Web01 & Web02):
+Add the following snippet (update IPs for Web01 & Web02):
 
 ```
 frontend http_front
@@ -100,7 +67,7 @@ Reload HAProxy:
 docker exec -it lb-01 sh -c 'haproxy -sf $(pidof haproxy) -f /etc/haproxy/haproxy.cfg'
 ```
 
-## 7. Test Load Balancing
+##  Test Load Balancing
 
 From Lb01 or your local machine:
 
