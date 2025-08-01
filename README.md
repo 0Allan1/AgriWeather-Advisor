@@ -34,10 +34,10 @@ Build and run the application locally:
 ```bash
 docker build -t 0allan1/agriweather:v1 .
 docker run -p 8080:80 0allan1/agriweather:v1
-```
+
 
 Visit [http://localhost:8080](http://localhost:8080) to view the application.
-
+```
 
 ##  Configure HAProxy on Lb01
 
