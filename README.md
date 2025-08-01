@@ -9,7 +9,9 @@ Actionable crop advice based on current temperature.
 User-friendly interface accessible via browser on desktop or mobile.
 
 This app bridges the gap between raw weather data and practical farming decisions, helping farmers reduce risks and improve productivity.
+
 APP LINK  https://0allan1.github.io/AgriWeather-Advisor/
+video app description https://us05web.zoom.us/clips/share/RbJkfzgFQTKj1XwOUcr4Rg
 
 ##  Application Overview
 
