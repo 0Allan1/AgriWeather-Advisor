@@ -44,13 +44,13 @@ Visit [http://localhost:8080](http://localhost:8080) to view the application.
 
 Edit HAProxy config:
 
-```bash
+bash
 sudo nano /etc/haproxy/haproxy.cfg
-```
+
 
 Add the following snippet (update IPs for Web01 & Web02):
 
-```
+
 frontend http_front
     bind *:80
     default_backend webapps
@@ -59,21 +59,21 @@ backend webapps
     balance roundrobin
     server web01 172.20.0.11:8080 check
     server web02 172.20.0.12:8080 check
-```
+
 
 Reload HAProxy:
 
-```bash
+bash
 docker exec -it lb-01 sh -c 'haproxy -sf $(pidof haproxy) -f /etc/haproxy/haproxy.cfg'
-```
+
 
 ##  Test Load Balancing
 
 From Lb01 or your local machine:
 
-```bash
+bash
 curl http://localhost
-```
+
 
 * Run multiple times; responses should alternate between Web01 and Web02.
 * Or open `http://<Lb01-IP>` in a browser.
