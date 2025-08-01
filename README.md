@@ -22,10 +22,10 @@ AgriWeather Advisor is a simple web application that:
 
 ##  Docker Hub Image
 
-```
-Docker Hub: https://hub.docker.com/r/0allan1/agriweather
+
+Docker Hub repo: https://hub.docker.com/r/0allan1/agriweather
 Image: 0allan1/agriweather:v1
-```
+
 
 ##  Local Build & Test
 
